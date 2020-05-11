@@ -1,65 +1,65 @@
-"use strict";
+document.addEventListener('DOMContentLoaded',domloaded,false);
+function domloaded(){
 
-var Scene = {
-    canvas : undefined,
-    canvasContext : undefined,
-	sprite: undefined
-};
+  var ctx = document.getElementById('doughnutChart').getContext('2d');
+  var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'doughnut',
 
-Scene.start = function () {
-	// Get the canvas and it's context.
-    Scene.canvas = document.getElementById("myCanvas");
-    Scene.canvasContext = Scene.canvas.getContext("2d");
-	
-	// Seup the parrot to be displayed.
-    Scene.sprite = parrot;
-	
-	// Attach the image to be used for the sprite.
-	Scene.sprite.img = new Image();
-    Scene.sprite.img.src = Scene.sprite.src;
-	
-	// Wait till the parrot image is loaded before starting the animation.
-	Scene.sprite.img.onload = function() {		
-		Scene.sprite.offset=-Scene.sprite.frames[Scene.sprite.frame].frame.w;
-    	Scene.mainLoop();
-	}
-};
+    // The data for our dataset
+    data: {
+      labels: flavors,
+      datasets: [
+        {
+          backgroundColor: ["#E6B0AA", "#D4E6F1", "#ABEBC6", "#A2D9CE", "#FCF3CF", "#EDBB99", "#D2B4DE", "#F7F9F9", "#D6DBDF"],
+          data: percentages,
+        }]
+      },
 
-// Once the basic HTML document is loaded and its parsing has taken place, start the scene.
-document.addEventListener( 'DOMContentLoaded', Scene.start);
+      // Configuration options go here
+      options: {
+        title: {
+          display: true,
+          text: 'Percentage of Favorite Donut Flavors (2018 Survey of 57,520 People)'
+        }
+      }
+  });
 
-Scene.clearCanvas = function () {
-    Scene.canvasContext.fillStyle = "white";
-    Scene.canvasContext.fillRect(0, 0, Scene.canvas.width, Scene.canvas.height);
-};
 
-Scene.mainLoop = function() {
-    Scene.clearCanvas();
-    Scene.update();
-    Scene.draw();
-	
-	// Animate at 24 frames a second.
-    window.setTimeout(Scene.mainLoop, 1000 /24);
-};
 
-Scene.update = function () {
-	// Set the canvas width to be that of the display Window. Which helps if you resize the window.
-  	Scene.canvas.width = window.innerWidth;
-	
-	// Set the location of the next frame. 
-  	Scene.sprite.offset+=24;
-	if(Scene.sprite.offset>Scene.canvas.width)
- 		Scene.sprite.offset=-Scene.sprite.frames[Scene.sprite.frame].frame.w;
-};
 
-Scene.draw = function () {
-	Scene.canvasContext.drawImage(Scene.sprite.img,Scene.sprite.frames[Scene.sprite.frame].frame.x,Scene.sprite.frames[Scene.sprite.frame].frame.y,Scene.sprite.frames[Scene.sprite.frame].frame.w,Scene.sprite.frames[Scene.sprite.frame].frame.h,Scene.sprite.offset,0,Scene.sprite.frames[Scene.sprite.frame].frame.w,Scene.sprite.frames[Scene.sprite.frame].frame.h);
-	
-	// Advance to the next frame.
-	Scene.sprite.frame++;
+  var ctx2 = document.getElementById('barChart').getContext('2d');
+  var chart2 = new Chart(ctx2, {
+    // The type of chart we want to create
+    type: 'horizontalBar',
 
-	// At the end of the sprite sheet, start at the first frame.
-	if(Scene.sprite.frame==Scene.sprite.frames.length)
-		Scene.sprite.frame=0;
-};
+    // The data for our dataset
+    data: {
+      labels: months,
+      datasets: [
+        {
+          backgroundColor: ["#C62828", "#AD1457", "#6A1B9A", "#4527A0", "#283593", "#1565C0", "#0277BD", "#00838F", "#00695C", "#2E7D32", "#F9A825", "#EF6C00"],
+          data: temps,
+        }]
+      },
+
+      // Configuration options go here
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Average Monthly Temperatures at Central Park for 2019'
+        },
+        scales: {
+          xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Degrees (Fahrenheit)'
+            }
+          }]
+        }
+      }
+    });
+
+  }
 
