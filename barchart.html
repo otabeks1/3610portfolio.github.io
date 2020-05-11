@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Objects</h2>
+<p>JavaScript uses names to access object properties.</p>
+
+<canvas id="myCanvas" width="800" height="1000" style="border:1px solid #d3d3d3; padding-top:50px;"></canvas>
+
+<p id="demo"></p>
+
+<script>
+var fruits = [{name:"Apple", quantity:20, color:"red"},
+			  {name:"Orange", quantity:10, color:"orange"},
+              {name:"Banana", quantity:15, color:"yellow"},
+              {name:"Kiwi", quantity:3, color:"green"},
+              {name:"Blueberry", quantity:5, color:"blue"},
+              {name:"Grapes", quantity:8, color:"purple"}
+			 ];
+
+
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+ctx.fillStyle = "red";
+ctx.font = "20px Arial" ;
+ctx.fillText( "Apple", 10, 20);
+ctx.fillRect(100, 10, 200, 10);
+
+
+for ( i = 1; i <= 6; i++){
+	ctx.fillStyle = fruits[i].color;
+	ctx.font = "20px Arial" ;
+	ctx.fillText( fruits[i].name, 10, i*50);
+	ctx.fillRect(100, i * 47, fruits[i].quantity*10, 10);
+
+}
+
+
+document.writeln(fruits[i].name + " " + fruits[i].quantity + " " + fruits[i].color ) ;
+
+
+
+</script>
+
+</body>
+</html>
