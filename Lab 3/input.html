@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <script type="text/javascript" src="Lab3.js"></script>
+</head>
+  <body>
+
+    <h2> Otabek Shavkatov </h2>
+    <h2>  Lab 3</h2>
+
+    <form>
+
+      <label for="noteTitle">Title</label>
+
+      <input type="text" id="noteTitle" name="noteTitle" maxlength="40" onInput="saveValues1()"><br><br>
+
+      <textarea id="notes" rows="20" cols="100" onInput="saveValues2()" placeholder="Please type here "></textarea><br><br>
+
+      <input type="button" value="Undo" onclick="undoValues()">
+
+      <input type="Reset" id="Reset" value="Clear" onclick="removeValues()">
+
+    </form>
+
+  </body>
+<br></br>
+<div>
+  <a href = "https://otabeks1.github.io/3610portfolio.github.io/">
+          Otabek's portfolio
+        </a>
+</div>
+ </html>
