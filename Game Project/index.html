@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="phaser.js"></script>
+    <script src="Boot.js"></script>
+    <script src="Preloader.js"></script>
+    <script src="MainMenu.js"></script>
+    <script src="GameOver.js"></script>
+    <script src="Level.js"></script>
+    <script src="Controls.js"></script>
+</head>
+<body>
+     <h2>Otabek Shavkatov</h2>
+     <h2>Game Project</h2>
+     <script type = "text/javascript">
+      window.onload = function()
+      {
+        var game = new Phaser.Game(800, 600, Phaser.canvas, '');
+
+        game.state.add('Boot', Game.Boot);
+        game.state.add('Preloader', Game.Preloader);
+        game.state.add('MainMenu', Game.MainMenu);
+        game.state.add('Level', Game.Level);
+        game.state.add('GameOver', Game.GameOver);
+        game.state.add('Controls', Game.Controls);
+
+        game.state.start('Boot');
+      };
+      </script>
+      <a href = "https://otabeks1.github.io/3610portfolio.github.io/">
+              Otabek's portfolio
+            </a>
+</body>
+</html>
