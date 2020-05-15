@@ -20,7 +20,7 @@ function domloaded(){
       options: {
         title: {
           display: true,
-          text: 'Percentage of Favorite Donut Flavors (2018 Survey of 57,520 People)'
+          text: 'Percentage of Favorite Ice Cream Flavors'
         }
       }
   });
